@@ -1,0 +1,9 @@
+.imagebox{
+	background: #ccc;
+	margin-bottom: 10px;
+	height: 500px;
+}
+
+.imagebox:nth-child(odd){
+	background: darkred;
+}
