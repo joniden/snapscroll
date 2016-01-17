@@ -38,20 +38,38 @@
 
 			jQuery(function($){
 
+				var timestart;
+				var index;
+
 			 	var swiper = new Swiper ('.swiper-container', {
-			      // Optional parameters
+		
 			      direction: 'vertical',
-			    })        
+			      freeMode: true,		      
+			      freeModeMomentumRatio: 0.1,
+			      onTouchStart(swiper, event){
+			      	timestart = event.timeStamp;
+			      	index = swiper.activeIndex;
+			      },
+			      onTouchEnd(swiper, event){
+			      	
+			      	timeend = event.timeStamp - timestart;
+			      	console.log(swiper);
 
-				/*var fast = false;
-				var scrollSpeedMonitor = new ScrollSpeedMonitor(function (speedInPxPerMs, timeStamp, newDirection){
-					if(speedInPxPerMs.toFixed(2) > 3){
-						fast = true;
-						console.log('Scroll speed: ' + speedInPxPerMs.toFixed(2));
-					}
-	    			
-				});*/
+			      	if(timeend < 200){
 
+			      		if(swiper.swipeDirection == 'next'){
+				      		swiper.slideTo(index+1);
+				      		console.log(index+1)
+				      	}else{
+				      		swiper.slideTo(index-1);
+				      	}
+			      	}else{
+			      		swiper.freeModeSticky = false;
+			      	}
+
+			      	//console.log(timeend);  
+			      }
+			    });
 
 			});
 		</script>
