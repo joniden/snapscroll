@@ -8,32 +8,26 @@
 		<link rel="stylesheet" type="text/css" href="style.css">
 
 		<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-		<!--<script type="text/javascript" src="scrollspeedmonitor.js"></script>-->
 		
 	</head>
 	<body>
+		<div class="topbar"><img src="topbar.png"></div>
 		<div class="swiper-container">
 			<div class="swiper-wrapper">
-				<div class="swiper-slide imagebox">1</div>
-				<div class="swiper-slide imagebox">2</div>
-				<div class="swiper-slide imagebox">3</div>
-				<div class="swiper-slide imagebox">4</div>
-				<div class="swiper-slide imagebox">5</div>
-				<div class="swiper-slide imagebox">6</div>
-				<div class="swiper-slide imagebox">7</div>
-				<div class="swiper-slide imagebox">8</div>
-				<div class="swiper-slide imagebox">9</div>
-				<div class="swiper-slide imagebox">10</div>
-				<div class="swiper-slide imagebox">11</div>
-				<div class="swiper-slide imagebox">12</div>
-				<div class="swiper-slide imagebox">13</div>
-				<div class="swiper-slide imagebox">14</div>
-				<div class="swiper-slide imagebox">15</div>
-				<div class="swiper-slide imagebox">16</div>
+				<div class="swiper-slide">
+					<img src="posts/post-01.png" height="1386" width="750" />
+				</div>
+				<div class="swiper-slide"><img src="posts/post-02.png" height="1202" width="750"></div>
+				<div class="swiper-slide"><img src="posts/post-03.png" height="1299" width="750"></div>
+				<div class="swiper-slide"><img src="posts/post-04.png" height="1333" width="750"></div>
+				<div class="swiper-slide"><img src="posts/post-05.png" height="1392" width="750"></div>
+				<div class="swiper-slide"><img src="posts/post-06.png" height="1253" width="750"></div>
+				<div class="swiper-slide"><img src="posts/post-07.png" height="1379" width="750"></div>
+				<div class="swiper-slide"><img src="posts/post-08.png" height="1326" width="750"></div>
 			</div>
 		</div>
 		
-		<script type="text/javascript" src="bower_components/Swiper/dist/js/swiper.jquery.js"></script>
+		<script type="text/javascript" src="bower_components/Swiper/dist/js/swiper.jquery.min.js"></script>
 		<script type="text/javascript">
 
 			jQuery(function($){
@@ -44,10 +38,10 @@
 			 	var swiper = new Swiper ('.swiper-container', {
 		
 			      direction: 'vertical',
-			      freeMode: true,		      
+			      freeMode: true,		  
+			      autoHeight: true,
+			      slidesPerView: 'auto',    
 			      freeModeMomentumRatio: 0.1,
-			      resistance: true,
-			      resistanceRatio: 0,
 			      onTouchStart(swiper, event){
 			      	timestart = event.timeStamp;
 			      	index = swiper.activeIndex;
@@ -55,17 +49,14 @@
 			      onTouchEnd(swiper, event){
 			      	
 			      	timeend = event.timeStamp - timestart;
-			      	//console.log(swiper);
-			      	//console.log(timeend);
 			      	
-
 			      	if(timeend < 200){
 
 			      		if(swiper.swipeDirection == 'next'){
-				      		swiper.slideTo(index+1,1000,false);
+				      		swiper.slideTo(index+1);
 				      		
 				      	}else{
-				      		swiper.slideTo(index-1,0,false);
+				      		swiper.slideTo(index-1);
 				      	}
 				      	swiper.mousewheel.timeout = setTimeout(function () {
 	                        swiper.slideReset(false,50);

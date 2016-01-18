@@ -5,9 +5,13 @@ html,body{
 	margin: 0;
 }
 
+.topbar img{
+    width: 100%;
+}
 
-.imagebox:nth-child(odd){
-	background: darkred;
+img{
+    width: 100%;
+    height: auto;
 }
 
  .swiper-container {
