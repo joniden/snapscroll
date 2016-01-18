@@ -42,9 +42,13 @@
 			      autoHeight: true,
 			      loop: true,
 			      slidesPerView: 'auto',
-			      initialSlide: 1,    
 			      loopedSlides: 4,
 			      freeModeMomentumRatio: 0.1,
+			      onInit(swiper){
+			      	swiper.mousewheel.timeout = setTimeout(function () {
+                        swiper.slideReset(false,0);
+                    }, 0);
+			      },
 			      onTouchStart(swiper, event){
 			      	timestart = event.timeStamp;
 			      	index = swiper.activeIndex;
