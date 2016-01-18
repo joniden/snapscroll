@@ -33,7 +33,7 @@
 			</div>
 		</div>
 		
-		<script type="text/javascript" src="bower_components/Swiper/dist/js/swiper.jquery.min.js"></script>
+		<script type="text/javascript" src="bower_components/Swiper/dist/js/swiper.jquery.js"></script>
 		<script type="text/javascript">
 
 			jQuery(function($){
@@ -46,6 +46,8 @@
 			      direction: 'vertical',
 			      freeMode: true,		      
 			      freeModeMomentumRatio: 0.1,
+			      resistance: true,
+			      resistanceRatio: 0,
 			      onTouchStart(swiper, event){
 			      	timestart = event.timeStamp;
 			      	index = swiper.activeIndex;
@@ -53,21 +55,24 @@
 			      onTouchEnd(swiper, event){
 			      	
 			      	timeend = event.timeStamp - timestart;
-			      	console.log(swiper);
+			      	//console.log(swiper);
+			      	//console.log(timeend);
+			      	
 
 			      	if(timeend < 200){
 
 			      		if(swiper.swipeDirection == 'next'){
-				      		swiper.slideTo(index+1);
-				      		console.log(index+1)
+				      		swiper.slideTo(index+1,1000,false);
+				      		
 				      	}else{
-				      		swiper.slideTo(index-1);
+				      		swiper.slideTo(index-1,0,false);
 				      	}
-			      	}else{
-			      		swiper.freeModeSticky = false;
+				      	swiper.mousewheel.timeout = setTimeout(function () {
+	                        swiper.slideReset();
+	                    }, 10);
+				      		
 			      	}
 
-			      	//console.log(timeend);  
 			      }
 			    });
 
