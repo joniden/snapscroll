@@ -52,15 +52,19 @@
 			      	
 			      	if(timeend < 200){
 
-			      		if(swiper.swipeDirection == 'next'){
-				      		swiper.slideTo(index+1);
-				      		
-				      	}else{
-				      		swiper.slideTo(index-1);
+			      		if(!swiper.isEnd || swiper.isBeginning){
+
+				      		if(swiper.swipeDirection == 'next'){
+				      				
+					      		swiper.slideNext();
+					      		
+					      	}else{
+					      		swiper.slidePrev();
+					      	}
+					      	swiper.mousewheel.timeout = setTimeout(function () {
+		                        swiper.slideReset(false,200);
+		                    }, 0);
 				      	}
-				      	swiper.mousewheel.timeout = setTimeout(function () {
-	                        swiper.slideReset(false,200);
-	                    }, 0);
 				      		
 			      	}
 
