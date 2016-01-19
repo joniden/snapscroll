@@ -40,15 +40,10 @@
 			      direction: 'vertical',
 			      freeMode: true,		  
 			      autoHeight: true,
-			      loop: true,
+			      //loop: true,
 			      slidesPerView: 'auto',
-			      loopedSlides: 4,
+			      //loopedSlides: 8,
 			      freeModeMomentumRatio: 0.1,
-			      onInit(swiper){
-			      	swiper.mousewheel.timeout = setTimeout(function () {
-                        swiper.slideReset(false,0);
-                    }, 0);
-			      },
 			      onTouchStart(swiper, event){
 			      	timestart = event.timeStamp;
 			      	index = swiper.activeIndex;
@@ -63,10 +58,10 @@
 
 				      		if(swiper.swipeDirection == 'next'){
 				      				
-					      		swiper.slideNext();
+					      		swiper.slideTo(index+1);
 					      		
 					      	}else{
-					      		swiper.slidePrev();
+					      		swiper.slideTo(index-1);
 					      	}
 					      	swiper.mousewheel.timeout = setTimeout(function () {
 		                        swiper.slideReset(false,200);
